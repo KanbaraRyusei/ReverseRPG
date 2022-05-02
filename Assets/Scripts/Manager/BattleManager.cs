@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BattleManager : MonoBehaviour
 {
     GameObject[] _players;
     GameObject[] _enemy;
+
+    public event Action PlayersAction;
     void Start()
     {
         
@@ -14,8 +17,8 @@ public class BattleManager : MonoBehaviour
     enum Turn
     {
         Start,
-        Player,
-        Enemy,
+        PlayerActionDecision,
+        Action,
         End
     }
 

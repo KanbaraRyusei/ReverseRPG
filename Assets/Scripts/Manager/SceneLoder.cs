@@ -13,6 +13,10 @@ public class SceneLoder : SingletonMonoBehaviour<SceneLoder>
     [Header("Battleシーンに遷移するか")]
     bool _isBattle = false;
 
+    [SerializeField]
+    [Header("BattleManagerのプレハブ")]
+    GameObject _battleManager;
+
     public void SceneLoad()
     {
         SceneManager.LoadSceneAsync(_sceneName);
@@ -24,6 +28,6 @@ public class SceneLoder : SingletonMonoBehaviour<SceneLoder>
 
     void BattleStart()
     {
-
+        Instantiate(_battleManager);
     }
 }

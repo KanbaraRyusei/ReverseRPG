@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class PlayerBase : MonoBehaviour, IDamageable, IHeelable
 {
@@ -29,6 +30,12 @@ public abstract class PlayerBase : MonoBehaviour, IDamageable, IHeelable
     [Header("Playerの素早さ")]
     int _speed;
 
+    public event Action PlayerAction;
+
+    private void Start()
+    {
+
+    }
 
     protected abstract void Attack();
 
