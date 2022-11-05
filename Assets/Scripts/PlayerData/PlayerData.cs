@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ƒvƒŒƒCƒ„[‚Ìƒf[ƒ^‚ğŠi”[‚·‚éScriptableObject
+/// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´ã™ã‚‹ScriptableObject
 /// </summary>
 [CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/PlayerData", order = 0)]
 public class PlayerData : ScriptableObject
@@ -16,22 +16,23 @@ public class PlayerData : ScriptableObject
     public int HP => _hP;
     public int MP => _mP;
     public int ExP => _exP;
+    public int Gold => _gold;
     public SkillData[] Skill => _skill;
 
     [SerializeField]
-    [Header("ƒŒƒxƒ‹")]
+    [Header("ãƒ¬ãƒ™ãƒ«")]
     int _level;
 
     [SerializeField]
-    [Header("UŒ‚—Í")]
+    [Header("æ”»æ’ƒåŠ›")]
     int _attack;
 
     [SerializeField]
-    [Header("–hŒä—Í")]
+    [Header("é˜²å¾¡åŠ›")]
     int _defense;
 
     [SerializeField]
-    [Header("‘¬‚³")]
+    [Header("é€Ÿã•")]
     int _speed;
 
     [SerializeField]
@@ -43,11 +44,15 @@ public class PlayerData : ScriptableObject
     int _mP;
 
     [SerializeField]
-    [Header("ŒoŒ±’l")]
+    [Header("çµŒé¨“å€¤")]
     int _exP;
 
     [SerializeField]
-    [Header("ƒXƒLƒ‹")]
+    [Header("é‡‘")]
+    int _gold;
+
+    [SerializeField]
+    [Header("ã‚¹ã‚­ãƒ«")]
     SkillData[] _skill;
 }
 
@@ -58,10 +63,10 @@ public class SkillData
     int Damege => _damege;
 
     [SerializeField]
-    [Header("ƒXƒLƒ‹‚Ì–¼‘O")]
+    [Header("ã‚¹ã‚­ãƒ«ã®åå‰")]
     string _skillName;
 
     [SerializeField]
-    [Header("ƒ_ƒ[ƒW—Ê")]
+    [Header("ãƒ€ãƒ¡ãƒ¼ã‚¸é‡")]
     int _damege;
 }
