@@ -9,6 +9,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/PlayerData", order = 0)]
 public class PlayerData : ScriptableObject
 {
+    public int Level => _level;
+    public int Attack => _attack;
+    public int Defense => _defense;
+    public int Speed => _speed;
+    public int HP => _hP;
+    public int MP => _mP;
+    public int ExP => _exP;
+    public SkillData[] Skill => _skill;
+
     [SerializeField]
     [Header("レベル")]
     int _level;
@@ -39,12 +48,15 @@ public class PlayerData : ScriptableObject
 
     [SerializeField]
     [Header("スキル")]
-    Skill[] _skill;
+    SkillData[] _skill;
 }
 
 [Serializable]
-public class Skill
+public class SkillData
 {
+    string SkillName => _skillName;
+    int Damege => _damege;
+
     [SerializeField]
     [Header("スキルの名前")]
     string _skillName;
