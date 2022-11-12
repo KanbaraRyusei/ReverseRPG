@@ -1,13 +1,12 @@
-ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´ã™ã‚‹ScriptableObject
+/// Enemy‚Ìƒf[ƒ^‚ğŠi”[‚·‚éScriptableObject
 /// </summary>
-[CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/PlayerData", order = 0)]
-public class PlayerData : ScriptableObject
+[CreateAssetMenu(fileName ="EnemyData", menuName ="EnemyData")]
+public class EnemyData : ScriptableObject
 {
     public int Level => _level;
     public int Attack => _attack;
@@ -20,19 +19,19 @@ public class PlayerData : ScriptableObject
     public SkillData[] Skills => _skills;
 
     [SerializeField]
-    [Header("ãƒ¬ãƒ™ãƒ«")]
+    [Header("ƒŒƒxƒ‹")]
     int _level;
 
     [SerializeField]
-    [Header("æ”»æ’ƒåŠ›")]
+    [Header("UŒ‚—Í")]
     int _attack;
 
     [SerializeField]
-    [Header("é˜²å¾¡åŠ›")]
+    [Header("–hŒä—Í")]
     int _defense;
 
     [SerializeField]
-    [Header("é€Ÿã•")]
+    [Header("‘¬‚³")]
     int _speed;
 
     [SerializeField]
@@ -44,14 +43,14 @@ public class PlayerData : ScriptableObject
     int _mP;
 
     [SerializeField]
-    [Header("çµŒé¨“å€¤")]
+    [Header("ŒoŒ±’l")]
     int _exP;
 
     [SerializeField]
-    [Header("é‡‘")]
+    [Header("‹à")]
     int _gold;
 
     [SerializeField]
-    [Header("ã‚¹ã‚­ãƒ«")]
+    [Header("ƒXƒLƒ‹")]
     SkillData[] _skills;
 }
