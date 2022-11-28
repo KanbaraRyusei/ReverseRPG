@@ -19,6 +19,7 @@ MonoBehaviour:
   _hP: 9
   _mP: 10
   _exP: 100
+  _gold: 0
   _skill:
-  - _skillName: "\u795E\u901F\u65AC\u308A"
-    _damege: 25
+  - _skillName: 
+    _damege: 0
