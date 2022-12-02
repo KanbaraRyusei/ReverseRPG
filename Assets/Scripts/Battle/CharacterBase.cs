@@ -8,9 +8,11 @@ public abstract class CharacterBase : MonoBehaviour, IDamage
     public int Attack => _attack;
     public int Defense => _defense;
     public int Speed => _speed;
+    public int MaxHP => _maxHp;
+    public int MaxMP => _maxMp;
     public int HP => _hp;
     public int MP => _mp;
-    public int ExP => _exP;
+    public int ExP => _exp;
     public int Gold => _gold;
     public bool IsPlayer => _isPlayer;
     public IReadOnlyList<SkillData> Skills => _skills;
@@ -19,9 +21,11 @@ public abstract class CharacterBase : MonoBehaviour, IDamage
     protected int _attack;
     protected int _defense;
     protected int _speed;
+    protected int _maxHp;
+    protected int _maxMp;
     protected int _hp;
     protected int _mp;
-    protected int _exP;
+    protected int _exp;
     protected int _gold;
     protected bool _isPlayer;
     protected List<SkillData> _skills;

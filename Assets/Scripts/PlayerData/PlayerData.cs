@@ -13,10 +13,9 @@ public class PlayerData : ScriptableObject
     public int Attack => _attack;
     public int Defense => _defense;
     public int Speed => _speed;
-    public int HP => _hP;
-    public int MP => _mP;
-    public int ExP => _exP;
-    public int Gold => _gold;
+    public int MaxHP => _maxHP;
+    public int MaxMP => _maxMP;
+    public int NeedExP => _needExP;
     public SkillData[] Skills => _skills;
 
     [SerializeField]
@@ -37,19 +36,15 @@ public class PlayerData : ScriptableObject
 
     [SerializeField]
     [Header("HP")]
-    int _hP;
+    int _maxHP;
 
     [SerializeField]
     [Header("MP")]
-    int _mP;
+    int _maxMP;
 
     [SerializeField]
     [Header("経験値")]
-    int _exP;
-
-    [SerializeField]
-    [Header("金")]
-    int _gold;
+    int _needExP;
 
     [SerializeField]
     [Header("スキル")]

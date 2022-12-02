@@ -20,7 +20,7 @@ public class BattleEnemy : CharacterBase
         _speed = _enemyData.Speed;
         _hp = _enemyData.HP;
         _mp = _enemyData.MP;
-        _exP = _enemyData.ExP;
+        _exp = _enemyData.ExP;
         _gold = _enemyData.Gold;
         _isPlayer = false;
         _skills = new List<SkillData>(_enemyData.Skills.Length);

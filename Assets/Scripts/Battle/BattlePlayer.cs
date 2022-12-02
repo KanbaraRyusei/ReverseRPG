@@ -4,29 +4,27 @@ using UnityEngine;
 
 public class BattlePlayer : CharacterBase
 {
-    [SerializeField]
-    private PlayerData _playerData;
-
     protected override void Awake()
     {
         base.Awake();
     }
 
+    public void SetData()
+    {
+        BattlePlayerData.SetParameter(_level, _hp, _mp, _gold, _exp, _skills.ToArray());
+    }
+
     protected override void Init()
     {
-        _level = _playerData.Level;
-        _attack = _playerData.Attack;
-        _defense = _playerData.Defense;
-        _speed = _playerData.Speed;
-        _hp = _playerData.HP;
-        _mp = _playerData.MP;
-        _exP = _playerData.ExP;
-        _gold = _playerData.Gold;
+        _level = BattlePlayerData.Level;
+        _hp = BattlePlayerData.HP;
+        _mp = BattlePlayerData.MP;
+        _exp = BattlePlayerData.Exp;
         _isPlayer = true;
-        _skills = new List<SkillData>(_playerData.Skills.Length);
-        for (int i = 0; i < _playerData.Skills.Length; i++)
+        _skills = new List<SkillData>(BattlePlayerData.Skills.Length);
+        for (int i = 0; i < BattlePlayerData.Skills.Length; i++)
         {
-            _skills[i] = _playerData.Skills[i];
+            _skills[i] = BattlePlayerData.Skills[i];
         }
     }
 

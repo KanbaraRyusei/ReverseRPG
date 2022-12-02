@@ -28,6 +28,13 @@ public class BattleManager : SingletonMonoBehaviour<BattleManager>
         _phaseManager.PlayPhase();
     }
 
+    private void OnDisable()
+    {
+        _player = null;
+        _enemys.Clear();
+        _characters = null;
+    }
+
     public void Register(CharacterBase characterBase, bool isPlayer)
     {
         if (isPlayer)
@@ -59,6 +66,7 @@ public class BattleManager : SingletonMonoBehaviour<BattleManager>
 
     public void EndBattle()
     {
+        _player.SetData();
         SceneLoder.LoadBeforeScene();
     }
 }
