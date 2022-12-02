@@ -32,7 +32,7 @@ public class BattlePlayer : CharacterBase
 
     public override void ReciveDamage(int damage)
     {
-        _hp -= Calculator.Instance.DamageCalculation(damage, _defense);
+        _hp -= Calculator.DamageCalculation(damage, _defense);
     }
 
     public override void SelectAction()

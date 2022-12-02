@@ -32,7 +32,7 @@ public class BattleEnemy : CharacterBase
 
     public override void ReciveDamage(int damage)
     {
-
+        _hp -= Calculator.DamageCalculation(damage, _defense);
     }
 
     public override void SelectAction()

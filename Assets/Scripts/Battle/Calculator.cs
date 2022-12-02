@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Calculator : SingletonMonoBehaviour<Calculator>
+public static class Calculator
 {
     /// <summary>
     /// ダメージ計算の関数
@@ -12,7 +12,7 @@ public class Calculator : SingletonMonoBehaviour<Calculator>
     /// <param name="damage"></param>
     /// <param name="defensePower"></param>
     /// <returns></returns>
-    public int DamageCalculation(int damage, int defensePower)
+    public static int DamageCalculation(int damage, int defensePower)
     {
         float attack = damage / 2;
         float defense = defensePower / 4;

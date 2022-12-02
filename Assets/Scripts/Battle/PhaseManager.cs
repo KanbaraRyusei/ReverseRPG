@@ -27,6 +27,9 @@ public class PhaseManager
             case BattlePhaseState.AliveCheck:
                 AliveCheckPhase();
                 break;
+            default:
+
+                break;
         }
     }
 
@@ -49,15 +52,24 @@ public class PhaseManager
         {
             NextPhase();
             _index = 0;
+            return;
         }
         BattleManager.Instance.Characters[_index].SelectAction();
     }
 
     private void AliveCheckPhase()
     {
+        for(int i = 0; i < BattleManager.Instance.Enemys.Count; i++)
+        {
+            if(BattleManager.Instance.Enemys[i].HP > 0)
+            {
+                return;
+            }
+        }
         if(BattleManager.Instance.Player.HP <= 0)
         {
             BattleManager.Instance.EndBattle();
         }
+        BattleManager.Instance.EndBattle();
     }
 }
