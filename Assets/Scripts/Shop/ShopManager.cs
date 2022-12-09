@@ -31,7 +31,9 @@ public class ShopManager : MonoBehaviour
         {
             //100ƒS[ƒ‹ƒhˆø‚­
             //_player.AddGold(-100);
-            //_player.AddItem(_items[TurnTheHandle()].Item);
+            var randomIndex = TurnTheHandle();
+            //_player.AddItem(_items[randomIndex].Item);
+            Debug.Log(randomIndex);
         }
     }
 
