@@ -7,5 +7,6 @@ public enum BattlePhaseState
     SpeedCheck,
     PlayerTurn,
     EnemyTurn,
+    PlayTurn,
     AliveCheck
 }

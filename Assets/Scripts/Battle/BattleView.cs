@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class BattleView : MonoBehaviour
 {
@@ -13,9 +14,7 @@ public class BattleView : MonoBehaviour
     [Header("MP")]
     private Slider _mpSlider;
 
-    [SerializeField]
-    [Header("コマンドのボタン")]
-    private Button _buttons;
+    private Button[] _buttons;
 
     public void SetMaxHP(float value)
     {
@@ -35,5 +34,43 @@ public class BattleView : MonoBehaviour
     public void SetMP(float value)
     {
         _mpSlider.value = value;
+    }
+
+    public void SetButton(int needNum)
+    {
+        CheckButtonCount(needNum);
+        for(int i = 0; i < needNum; i++)
+        {
+            _buttons[i].gameObject.SetActive(true);
+        }
+    }
+
+    public void ButtonTextChenge(string[] texts)
+    {
+        for(int i = 0; i < texts.Length; i++)
+        {
+            _buttons[i].GetComponent<Text>().text = texts[i];
+        }
+    }
+
+    public void ButtonActionChange(Action[] actions)
+    {
+        for(int i = 0; i < _buttons.Length; i++)
+        {
+            int x = i;// AddListener用変数
+            _buttons[x].onClick.AddListener(() => actions[x]());
+        }
+    }
+
+    private void CheckButtonCount(int needNum)
+    {
+        if (_buttons.Length < needNum)
+        {
+            _buttons = new Button[needNum];
+            for (int i = 0; i < _buttons.Length; i++)
+            {
+                _buttons[i].gameObject.SetActive(false);
+            }
+        }
     }
 }

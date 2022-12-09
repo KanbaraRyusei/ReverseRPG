@@ -55,13 +55,14 @@ public class PhaseManager
             return;
         }
         BattleManager.Instance.Characters[_index].SelectAction();
+        BattleManager.Instance.Characters[_index].PlayAction();
     }
 
     private void AliveCheckPhase()
     {
-        for(int i = 0; i < BattleManager.Instance.Enemys.Count; i++)
+        for(int i = 0; i < BattleManager.Instance.Enemies.Count; i++)
         {
-            if(BattleManager.Instance.Enemys[i].HP > 0)
+            if(BattleManager.Instance.Enemies[i].HP > 0)
             {
                 return;
             }

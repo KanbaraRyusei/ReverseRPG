@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BattleEnemy : CharacterBase
 {
     [SerializeField]
     private EnemyData _enemyData;
+
+    private Action _action;
 
     protected override void Awake()
     {
@@ -37,11 +40,11 @@ public class BattleEnemy : CharacterBase
 
     public override void SelectAction()
     {
-        _skills[Random.Range(0, _skills.Count)].Effect();
+        _action = () => _skills[UnityEngine.Random.Range(0, _skills.Count)].Effect();
     }
 
-    protected override void PlayAction()
+    public override void PlayAction()
     {
-
+        _action?.Invoke();
     }
 }
