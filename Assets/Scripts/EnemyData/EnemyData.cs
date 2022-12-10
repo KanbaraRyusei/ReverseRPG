@@ -9,6 +9,7 @@ using UnityEngine;
 public class EnemyData : ScriptableObject
 {
     public int Level => _level;
+    public string Name => _name;
     public int Attack => _attack;
     public int Defense => _defense;
     public int Speed => _speed;
@@ -21,6 +22,10 @@ public class EnemyData : ScriptableObject
     [SerializeField]
     [Header("ƒŒƒxƒ‹")]
     int _level;
+
+    [SerializeField]
+    [Header("–¼‘O")]
+    string _name;
 
     [SerializeField]
     [Header("UŒ‚—Í")]

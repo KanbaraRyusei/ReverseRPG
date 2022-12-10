@@ -8,12 +8,9 @@ public class PhaseManager
 
     private BattlePhaseState _battlePhaseState;
 
-    private int _index = 0;
-
     public PhaseManager()
     {
         Debug.Log("BattleStart");
-        _index = 0;
         _battlePhaseState = BattlePhaseState.SpeedCheck;
     }
 
@@ -48,14 +45,13 @@ public class PhaseManager
 
     private void SpeedCheckPhase()
     {
-        if(_index > BattleManager.Instance.Characters.Count)
+        for(int i = 0; i < BattleManager.Instance.Characters.Count; i++)
         {
-            NextPhase();
-            _index = 0;
-            return;
+            BattleManager.Instance.Characters[i].SelectAction();
+            BattleManager.Instance.Characters[i].PlayAction();
         }
-        BattleManager.Instance.Characters[_index].SelectAction();
-        BattleManager.Instance.Characters[_index].PlayAction();
+        Debug.Log("ƒ^[ƒ“I—¹");
+        NextPhase();
     }
 
     private void AliveCheckPhase()
@@ -67,9 +63,9 @@ public class PhaseManager
                 return;
             }
         }
-        if(BattleManager.Instance.Player.HP <= 0)
+        if(BattleManager.Instance.Player.HP >= 0)
         {
-            BattleManager.Instance.EndBattle();
+            NextPhase();
         }
         BattleManager.Instance.EndBattle();
     }

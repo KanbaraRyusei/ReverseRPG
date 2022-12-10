@@ -13,12 +13,11 @@ public class BattlePresenter : MonoBehaviour
     [Header("最初の行動")]
     private string[] _firstActions;
 
+    [SerializeField]
     private BattlePlayer _battlePlayer;
 
     private void Start()
     {
-        _battlePlayer = BattleManager.Instance.Player;
-
         _battlePlayer.ObserveEveryValueChanged(x => x.HP)
             .Subscribe(x => _battleView.SetMaxHP(x));
 
@@ -41,18 +40,13 @@ public class BattlePresenter : MonoBehaviour
                         _battleView.SetButton(_firstActions.Length);
                         _battleView.ButtonTextChenge(_firstActions);
                         Action[] actions = new Action[_firstActions.Length];
-                        PlayerSelectActionPhase[] actionPhases = new PlayerSelectActionPhase[5];
-                        actionPhases[0] = PlayerSelectActionPhase.SelectNomalAttack;
-                        actionPhases[1] = PlayerSelectActionPhase.SelectSkill;
-                        actionPhases[2] = PlayerSelectActionPhase.SelectMagic;
-                        actionPhases[3] = PlayerSelectActionPhase.SelectItem;
-                        actionPhases[4] = PlayerSelectActionPhase.RunAway;
-                        for(int i = 0; i < actionPhases.Length; i++)
-                        {
-                            actions[i] = () => _battlePlayer.SetActionPhase(actionPhases[i]);
-                        }
+                        actions[0] = () => _battlePlayer.SetActionPhase(PlayerSelectActionPhase.SelectEnemy);
+                        actions[1] = () => _battlePlayer.SetActionPhase(PlayerSelectActionPhase.None);
+                        actions[2] = () => _battlePlayer.SetActionPhase(PlayerSelectActionPhase.SelectSkill);
+                        actions[3] = () => _battlePlayer.SetActionPhase(PlayerSelectActionPhase.SelectMagic);
+                        actions[4] = () => _battlePlayer.SetActionPhase(PlayerSelectActionPhase.RunAway);
+                        
                         _battleView.ButtonActionChange(actions);
-
                         break;
 
                     case PlayerSelectActionPhase.SelectEnemy:
@@ -67,10 +61,11 @@ public class BattlePresenter : MonoBehaviour
 
                         _battleView.ButtonTextChenge(enemyNames);
                         Action[] selectActions = new Action[BattleManager.Instance.Enemies.Count];
-                        for(int i = 0; i < selectActions.Length; i++)
+                        selectActions[0] = () =>
                         {
-                            selectActions[i] = () => _battlePlayer.SetTarget(BattleManager.Instance.Enemies[i]);
-                        }
+                            _battlePlayer.SetTarget(BattleManager.Instance.Enemies[0]);
+                            _battlePlayer.SetActionPhase(PlayerSelectActionPhase.SelectNomalAttack);
+                        };
                         _battleView.ButtonActionChange(selectActions);
 
                         break;
@@ -92,15 +87,21 @@ public class BattlePresenter : MonoBehaviour
 
                         _battleView.SetButton(1);// ただの攻撃なのでとくに選ぶものがない
                         string[] s = new string[1];
-                        s[0] = "攻撃";
+                        s[0] = "Attack";
                         _battleView.ButtonTextChenge(s);
                         Action[] nomalAttack = new Action[1];
-                        nomalAttack[0] = () => _battlePlayer.SetAction( () =>_battlePlayer.Target.GetComponent<BattleEnemy>().ReciveDamage(_battlePlayer.Attack));
+                        nomalAttack[0] = () =>
+                        {
+                            _battlePlayer.Target.GetComponent<BattleEnemy>().ReciveDamage(_battlePlayer.Attack);
+                            _battlePlayer.SetActionPhase(PlayerSelectActionPhase.SelectAction);
+                        };
                         _battleView.ButtonActionChange(nomalAttack);
 
                         break;
 
                     case PlayerSelectActionPhase.SelectSkill:
+                        Debug.Log("スキルは未実装です");
+                        return;
                         _battleView.SetButton(_battlePlayer.Skills.Count);
                         string[] skills = new string[_battlePlayer.Skills.Count];
                         for(int i = 0; i < _battlePlayer.Skills.Count; i++)
@@ -112,6 +113,8 @@ public class BattlePresenter : MonoBehaviour
                         break;
 
                     case PlayerSelectActionPhase.SelectMagic:
+                        Debug.Log("魔法は未実装です");
+                        return;
                         _battleView.SetButton(_battlePlayer.Magics.Count);
                         string[] magics = new string[_battlePlayer.Magics.Count];
                         for(int i = 0; i < _battlePlayer.Magics.Count; i++)

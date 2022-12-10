@@ -18,6 +18,7 @@ public class BattleEnemy : CharacterBase
     protected override void Init()
     {
         _level = _enemyData.Level;
+        _name = _enemyData.Name;
         _attack = _enemyData.Attack;
         _defense = _enemyData.Defense;
         _speed = _enemyData.Speed;
@@ -35,12 +36,14 @@ public class BattleEnemy : CharacterBase
 
     public override void ReciveDamage(int damage)
     {
-        _hp -= Calculator.DamageCalculation(damage, _defense);
+        var d = Calculator.DamageCalculation(damage, _defense);
+        _hp -= d;
+        Debug.Log(_name + "‚Í" + d + "ƒ_ƒ[ƒW‚ðŽó‚¯‚½");
     }
 
     public override void SelectAction()
     {
-        _action = () => _skills[UnityEngine.Random.Range(0, _skills.Count)].Effect();
+        _action = () => BattleManager.Instance.Player.ReciveDamage(_attack);
     }
 
     public override void PlayAction()

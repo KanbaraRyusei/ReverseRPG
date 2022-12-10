@@ -14,7 +14,7 @@ public class BattleManager : SingletonMonoBehaviour<BattleManager>
 
     private List<BattleEnemy> _enemys = new List<BattleEnemy>();
 
-    private CharacterBase[] _characters;
+    private List<CharacterBase> _characters = new List<CharacterBase>();
 
     private PhaseManager _phaseManager;
 
@@ -46,12 +46,13 @@ public class BattleManager : SingletonMonoBehaviour<BattleManager>
         {
             _enemys.Add(characterBase as BattleEnemy);
         }
+        _characters.Add(characterBase);
+        Debug.Log(characterBase.Name + "‚ð“o˜^‚µ‚Ü‚µ‚½");
     }
     
     public void CharacterSpeedSort()
     {
-        _characters = new CharacterBase[1 + _enemys.Count];
-        for(int i = 0; i < _characters.Length; i++)
+        for(int i = 0; i < _characters.Count; i++)
         {
             if(i == 0)
             {

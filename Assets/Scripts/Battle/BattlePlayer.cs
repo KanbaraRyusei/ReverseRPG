@@ -20,7 +20,7 @@ public class BattlePlayer : CharacterBase
 
     public void SetData()
     {
-        BattlePlayerData.SetParameter(_level, _hp, _mp, _gold, _exp, _skills.ToArray(), _items.ToArray());
+        BattlePlayerData.SetParameter(_level, _name, _hp, _mp, _attack, _defense, _speed, _gold, _exp, _skills.ToArray(), _items.ToArray());
     }
 
     public void GetSkill(SkillData skillData)
@@ -36,20 +36,26 @@ public class BattlePlayer : CharacterBase
     protected override void Init()
     {
         _level = BattlePlayerData.Level;
+        _name = BattlePlayerData.Name;
         _hp = BattlePlayerData.HP;
         _mp = BattlePlayerData.MP;
+        _attack = BattlePlayerData.Attack;
+        _defense = BattlePlayerData.Defence;
+        _speed = BattlePlayerData.Speed;
         _exp = BattlePlayerData.Exp;
         _isPlayer = true;
-        _skills = new List<SkillData>(BattlePlayerData.Skills.Length);
-        for (int i = 0; i < BattlePlayerData.Skills.Length; i++)
-        {
-            _skills[i] = BattlePlayerData.Skills[i];
-        }
+        //_skills = new List<SkillData>(BattlePlayerData.Skills.Length);
+        //for (int i = 0; i < BattlePlayerData.Skills.Length; i++)
+        //{
+        //    _skills[i] = BattlePlayerData.Skills[i];
+        //}
     }
 
     public override void ReciveDamage(int damage)
     {
-        _hp -= Calculator.DamageCalculation(damage, _defense);
+        var d = Calculator.DamageCalculation(damage, _defense);
+        _hp -= d;
+        Debug.Log(_name + "‚Í" + d + "ƒ_ƒ[ƒW‚ðŽó‚¯‚½");
     }
 
     public override void SelectAction()

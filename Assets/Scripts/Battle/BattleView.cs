@@ -14,7 +14,13 @@ public class BattleView : MonoBehaviour
     [Header("MP")]
     private Slider _mpSlider;
 
-    private Button[] _buttons;
+    [SerializeField]
+    private Button _button;
+
+    [SerializeField]
+    private Transform _parent;
+
+    private Button[] _buttons = new Button[0];
 
     public void SetMaxHP(float value)
     {
@@ -49,7 +55,7 @@ public class BattleView : MonoBehaviour
     {
         for(int i = 0; i < texts.Length; i++)
         {
-            _buttons[i].GetComponent<Text>().text = texts[i];
+            _buttons[i].gameObject.GetComponentInChildren<Text>().text = texts[i];
         }
     }
 
@@ -58,6 +64,7 @@ public class BattleView : MonoBehaviour
         for(int i = 0; i < _buttons.Length; i++)
         {
             int x = i;// AddListener—p•Ï”
+            _buttons[x].onClick.RemoveAllListeners();
             _buttons[x].onClick.AddListener(() => actions[x]());
         }
     }
@@ -69,7 +76,17 @@ public class BattleView : MonoBehaviour
             _buttons = new Button[needNum];
             for (int i = 0; i < _buttons.Length; i++)
             {
+                var b = Instantiate(_button);
+                _buttons[i] = b;
+                b.transform.parent = _parent;
                 _buttons[i].gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            foreach(var b in _buttons)
+            {
+                b.gameObject.SetActive(false);
             }
         }
     }

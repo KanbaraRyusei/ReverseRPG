@@ -10,17 +10,23 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     public int Level => _level;
+    public string Name => _name;
     public int Attack => _attack;
     public int Defense => _defense;
     public int Speed => _speed;
     public int MaxHP => _maxHP;
     public int MaxMP => _maxMP;
     public int NeedExP => _needExP;
+    public int Gold => _gold;
     public SkillData[] Skills => _skills;
 
     [SerializeField]
     [Header("レベル")]
     int _level;
+
+    [SerializeField]
+    [Header("名前")]
+    string _name;
 
     [SerializeField]
     [Header("攻撃力")]
@@ -45,6 +51,10 @@ public class PlayerData : ScriptableObject
     [SerializeField]
     [Header("経験値")]
     int _needExP;
+
+    [SerializeField]
+    [Header("所持金")]
+    int _gold;
 
     [SerializeField]
     [Header("スキル")]
