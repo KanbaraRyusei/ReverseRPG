@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434775500aec96742b49f29f5bf2e9ad, type: 3}
+  m_Name: TestEnemyData
+  m_EditorClassIdentifier: 
+  _level: 1
+  _name: "\u9B54\u738B\u30B3\u30F3\u30C9\u30FC"
+  _attack: 3
+  _defense: 3
+  _speed: 5
+  _hP: 50
+  _mP: 10
+  _exP: 3
+  _gold: 3
+  _skills: []

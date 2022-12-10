@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70132d53fcbc2e14a9f386a580e833c3, type: 3}
   m_Name: TestPlayerData
   m_EditorClassIdentifier: 
-  _level: 0
-  _attack: 3
-  _defense: 3
-  _speed: 5
-  _hP: 9
-  _mP: 10
-  _exP: 100
-  _skill:
-  - _skillName: "\u795E\u901F\u65AC\u308A"
-    _damege: 25
+  _level: 1
+  _name: "\u52C7\u8005"
+  _attack: 5
+  _defense: 5
+  _speed: 10
+  _maxHP: 100
+  _maxMP: 15
+  _needExP: 5
+  _gold: 0
+  _skills: []
