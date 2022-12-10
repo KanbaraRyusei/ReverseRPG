@@ -18,6 +18,10 @@ public class ShopManager : MonoBehaviour
     [Header("排出アイテム")]
     private GatyaItem[] _items = new GatyaItem[6];
 
+    [SerializeField]
+    [Header("プレイヤー")]
+    BattlePlayer _player;
+
     const int MAX_VALUE = 100;
 
     /// <summary>
@@ -26,14 +30,14 @@ public class ShopManager : MonoBehaviour
     public void IsTurning()
     {
         //プレイヤーが100ゴールド以上持っていたら
-        //_player.Gold >= _price
-        if(true)
+        
+        if(_player.Gold >= _price)
         {
             //100ゴールド引く
-            //_player.AddGold(-100);
+            _player.AddGold(-_price);
             var randomIndex = TurnTheHandle();
-            //_player.AddItem(_items[randomIndex].Item);
-            Debug.Log(randomIndex);
+            _player.GetItem(_items[randomIndex].Item);
+            Debug.Log(_items[randomIndex].Item.Name);
         }
     }
 
@@ -89,16 +93,16 @@ public class ShopManager : MonoBehaviour
     [Serializable]
     public class GatyaItem : IProbability<GatyaItem, int>
     {
-        //public ItemBase Item => _item;
+        public ItemData Item => _item;
         public int Probability => _probability;
 
         [SerializeField]
         [Header("アイテム名")]
         string _name = "アイテム";
 
-        //[SerializeField]
-        //[Header("アイテム")]
-        //ItemBase _item;
+        [SerializeField]
+        [Header("アイテム")]
+        ItemData _item;
 
         [SerializeField]
         [Header("排出率")]

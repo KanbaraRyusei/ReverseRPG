@@ -33,6 +33,11 @@ public class BattlePlayer : CharacterBase
         _items.Add(itemData);
     }
 
+    public void AddGold(int gold)
+    {
+        _gold += gold;
+    }
+
     protected override void Init()
     {
         _level = BattlePlayerData.Level;
