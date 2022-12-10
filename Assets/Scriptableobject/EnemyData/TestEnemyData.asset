@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70132d53fcbc2e14a9f386a580e833c3, type: 3}
-  m_Name: TestPlayerData
+  m_Script: {fileID: 11500000, guid: 434775500aec96742b49f29f5bf2e9ad, type: 3}
+  m_Name: TestEnemyData
   m_EditorClassIdentifier: 
   _level: 1
-  _name: "\u52C7\u8005"
-  _attack: 5
-  _defense: 5
-  _speed: 10
-  _maxHP: 100
-  _maxMP: 15
-  _needExP: 5
-  _gold: 0
+  _name: "\u9B54\u738B\u30B3\u30F3\u30C9\u30FC"
+  _attack: 3
+  _defense: 3
+  _speed: 5
+  _hP: 50
+  _mP: 10
+  _exP: 3
+  _gold: 3
   _skills: []
