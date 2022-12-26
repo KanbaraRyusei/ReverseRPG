@@ -44,11 +44,6 @@ public class BattlePlayer : CharacterBase
         _speed = BattlePlayerData.Speed;
         _exp = BattlePlayerData.Exp;
         _isPlayer = true;
-        //_skills = new List<SkillData>(BattlePlayerData.Skills.Length);
-        //for (int i = 0; i < BattlePlayerData.Skills.Length; i++)
-        //{
-        //    _skills[i] = BattlePlayerData.Skills[i];
-        //}
     }
 
     public override void ReciveDamage(int damage)

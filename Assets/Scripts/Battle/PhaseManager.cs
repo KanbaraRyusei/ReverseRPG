@@ -10,13 +10,12 @@ public class PhaseManager
 
     public PhaseManager()
     {
-        Debug.Log("BattleStart");
         _battlePhaseState = BattlePhaseState.SpeedCheck;
     }
 
     public void PlayPhase()
     {
-        switch(_battlePhaseState)
+        switch (_battlePhaseState)
         {
             case BattlePhaseState.SpeedCheck:
                 SpeedCheckPhase();
@@ -32,7 +31,7 @@ public class PhaseManager
 
     private void NextPhase()
     {
-        switch(_battlePhaseState)
+        switch (_battlePhaseState)
         {
             case BattlePhaseState.SpeedCheck:
                 _battlePhaseState = BattlePhaseState.AliveCheck;
@@ -41,29 +40,35 @@ public class PhaseManager
                 _battlePhaseState = BattlePhaseState.SpeedCheck;
                 break;
         }
+        Debug.Log("NextPhase");
     }
 
     private void SpeedCheckPhase()
     {
-        for(int i = 0; i < BattleManager.Instance.Characters.Count; i++)
+        BattleManager.Instance.CharacterSpeedSort();
+        for (int i = 0; i < BattleManager.Instance.Characters.Count; i++)
         {
             BattleManager.Instance.Characters[i].SelectAction();
-            BattleManager.Instance.Characters[i].PlayAction();
+            if (!BattleManager.Instance.Characters[i].IsPlayer)
+            {
+                BattleManager.Instance.Characters[i].PlayAction();
+            }
+            Debug.Log(i + "‰ñ–Ú");
         }
-        Debug.Log("ƒ^[ƒ“I—¹");
         NextPhase();
     }
 
     private void AliveCheckPhase()
     {
-        for(int i = 0; i < BattleManager.Instance.Enemies.Count; i++)
+        Debug.Log("AliveCheck");
+        for (int i = 0; i < BattleManager.Instance.Enemies.Count; i++)
         {
-            if(BattleManager.Instance.Enemies[i].HP > 0)
+            if (BattleManager.Instance.Enemies[i].HP > 0)
             {
                 return;
             }
         }
-        if(BattleManager.Instance.Player.HP >= 0)
+        if (BattleManager.Instance.Player.HP >= 0)
         {
             NextPhase();
         }

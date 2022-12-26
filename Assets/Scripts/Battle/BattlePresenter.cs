@@ -72,6 +72,8 @@ public class BattlePresenter : MonoBehaviour
 
                     case PlayerSelectActionPhase.SelectItem:
 
+                        Debug.Log("アイテムは未実装です");
+                        return;
                         _battleView.SetButton(_battlePlayer.Items.Count);
                         string[] items = new string[_battlePlayer.Items.Count];
                         for(int i = 0; i < _battlePlayer.Items.Count; i++)
@@ -80,7 +82,6 @@ public class BattlePresenter : MonoBehaviour
                         }
                         _battleView.ButtonTextChenge(items);
                         Action[] selectItems = new Action[_battlePlayer.Items.Count];
-                        Debug.Log("アイテムは未実装です");
                         break;
 
                     case PlayerSelectActionPhase.SelectNomalAttack:
